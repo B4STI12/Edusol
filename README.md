@@ -29,6 +29,8 @@ Edusol/
 ├── krisenmanagement.html
 ├── npo.html
 ├── schulentwicklung.html
+├── schulentwicklung.html
+├──ueber-uns.html
 └── img/
     ├── EDUSOL_Logo.svg
     ├── EDUSOL_Logo_Claim.svg
