@@ -16,8 +16,8 @@ Statische Website für **Edusol** – Bildung neu denken.
 | `krisenmanagement.html` | Fachgebiet: Krisenmanagement |
 | `npo.html` | Fachgebiet: NPO |
 | `schulentwicklung.html` | Fachgebiet: Schulentwicklung |
-| `kontakt.html` | Kontaktseite *(ausstehend)* |
-| `ueber-uns.html` | Über uns *(ausstehend)* |
+| `kontakt.html` | Kontaktseite |
+| `ueber-uns.html` | Über uns |
 
 ## Struktur
 
