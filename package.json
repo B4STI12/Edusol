@@ -1,0 +1,28 @@
+{
+  "name": "edusol",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "icons": "node scripts/generate-icons.mjs",
+    "check:html": "html-validate \"_site/**/*.html\"",
+    "check:links": "node scripts/check-links.mjs",
+    "check:a11y": "node scripts/check-a11y.mjs",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "test": "npm run build && npm run check:html && npm run check:links && npm run check:a11y"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@axe-core/playwright": "^4.13.0",
+    "@fontsource/poppins": "^5.3.0",
+    "bootstrap": "^5.3.8",
+    "html-validate": "^11.16.0",
+    "playwright": "^1.63.0",
+    "png-to-ico": "^3.0.2",
+    "sharp": "^0.35.4"
+  }
+}

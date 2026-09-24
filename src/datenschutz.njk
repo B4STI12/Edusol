@@ -1,0 +1,130 @@
+---
+layout: layouts/base.njk
+title: Datenschutzerklärung
+description: Datenschutzerklärung von EDUSOL – welche Personendaten wir beim Besuch der Website und bei Kontaktanfragen bearbeiten und welche Rechte ihr habt.
+permalink: /datenschutz.html
+breadcrumb:
+  - name: Datenschutz
+    url: /datenschutz.html
+---
+<section class="hero hero--legal">
+  <div class="container px-4 px-lg-5 py-5 measure-wide">
+    <h1 class="heading-page mb-2">Datenschutzerklärung</h1>
+    <p class="lead-text mb-0">Wie wir mit euren Personendaten umgehen – kurz und transparent.</p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container px-4 measure-wide legal">
+    {% include "partials/placeholder-note.njk" %}
+
+    <h2 id="kurzfassung">Das Wichtigste in Kürze</h2>
+    <ul>
+      <li>Wir setzen <strong>keine Cookies</strong>, kein Tracking und keine Analyse-Tools ein.</li>
+      <li>Schriften und Skripte liegen auf unserem eigenen Webspace; beim Seitenaufruf werden keine Daten an Google oder andere CDN übertragen.</li>
+      <li>Personendaten bearbeiten wir nur, wenn ihr uns über das Kontaktformular oder per E-Mail schreibt, sowie in technisch notwendigen Server-Logs unseres Hosting-Anbieters.</li>
+    </ul>
+
+    <h2 id="verantwortlich">1. Verantwortliche Stelle</h2>
+    <p>Verantwortlich für die Datenbearbeitung auf dieser Website ist:</p>
+    {% include "partials/owner-address.njk" %}
+
+    <h2 id="grundlagen">2. Rechtsgrundlagen</h2>
+    <p>
+      Wir bearbeiten Personendaten gemäss dem Schweizer Bundesgesetz über den Datenschutz (DSG) und der
+      Datenschutzverordnung (DSV). Soweit im Einzelfall die Datenschutz-Grundverordnung der EU (DSGVO) anwendbar ist,
+      stützen wir die Bearbeitung auf die Beantwortung eurer Anfrage bzw. vorvertragliche Massnahmen
+      (Art. 6 Abs. 1 lit. b DSGVO) und auf unser berechtigtes Interesse an einem sicheren Betrieb der Website
+      (Art. 6 Abs. 1 lit. f DSGVO).
+    </p>
+
+    <h2 id="hosting">3. Hosting und Server-Logfiles</h2>
+    <p>
+      Diese Website wird über <strong>GitHub Pages</strong> der GitHub Inc., 88 Colin P. Kelly Jr. Street,
+      San Francisco, CA 94107, USA, bereitgestellt. Beim Aufruf einer Seite verarbeitet GitHub technisch notwendige
+      Daten, insbesondere die IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Adresse, die zuvor besuchte Seite
+      (Referrer) sowie Angaben zu Browser und Betriebssystem. Diese Daten dienen der Auslieferung der Website und der
+      Abwehr von Angriffen. Wir selbst haben keinen Zugriff auf diese Logfiles.
+    </p>
+    <p>
+      Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.
+    </p>
+
+    <h2 id="kontaktformular">4. Kontaktformular</h2>
+    <p>
+      Wenn ihr uns über das Kontaktformular schreibt, bearbeiten wir Vorname, Nachname, E-Mail-Adresse, das gewählte Thema,
+      eure Nachricht sowie – falls angegeben – Telefonnummer und Organisation. Wir verwenden diese Daten ausschliesslich,
+      um eure Anfrage zu beantworten und ein allfälliges Angebot zu erstellen.
+    </p>
+    <p>
+      Für die Übermittlung nutzen wir den Dienst <strong>Formspree</strong> der Formspree Inc., USA. Formspree empfängt die
+      Formulardaten, speichert sie auf Servern in den USA und leitet sie per E-Mail an uns weiter. Dabei wird auch eure
+      IP-Adresse verarbeitet. Formspree handelt als Auftragsbearbeiter.
+      Mehr dazu: <a href="https://formspree.io/legal/privacy-policy/" rel="noopener">Datenschutzerklärung von Formspree</a>.
+    </p>
+    <p>
+      Alternativ könnt ihr uns direkt per E-Mail an <a href="mailto:{{ site.email }}">{{ site.email }}</a> schreiben.
+    </p>
+
+    <h2 id="email">5. Kontakt per E-Mail</h2>
+    <p>
+      Schreibt ihr uns per E-Mail, bearbeiten wir eure E-Mail-Adresse und die Angaben in der Nachricht zur Beantwortung
+      eurer Anfrage.
+    </p>
+
+    <h2 id="externe-links">6. Links zu Drittanbietern</h2>
+    <p>
+      Wir verlinken auf unser Profil bei LinkedIn{% if site.whatsapp %} und auf WhatsApp{% endif %}. Es handelt sich um
+      einfache Links: Beim Besuch unserer Website werden keine Daten an diese Anbieter übertragen. Erst wenn ihr einen Link
+      anklickt, gelten die Datenschutzbestimmungen des jeweiligen Anbieters.
+    </p>
+
+    <h2 id="cookies">7. Cookies, Tracking und externe Ressourcen</h2>
+    <p>
+      Diese Website setzt keine Cookies und verwendet weder Analyse- noch Werbedienste. Schriftarten (Poppins) und
+      Bibliotheken (Bootstrap) werden von unserem eigenen Webspace geladen, nicht von externen Servern.
+    </p>
+
+    <h2 id="ausland">8. Bekanntgabe ins Ausland</h2>
+    <p>
+      GitHub und Formspree haben ihren Sitz in den USA. Die GitHub Inc. ist unter dem Swiss-U.S. Data Privacy Framework
+      zertifiziert, das der Bundesrat als angemessenen Datenschutz anerkennt. Für Formspree erfolgt die Bekanntgabe auf
+      Grundlage von Standardvertragsklauseln (Art. 16 Abs. 2 lit. d DSG).
+    </p>
+
+    <h2 id="aufbewahrung">9. Aufbewahrungsdauer</h2>
+    <p>
+      Anfragen bewahren wir so lange auf, wie es für die Bearbeitung und allfällige Folgekorrespondenz nötig ist, und
+      löschen sie danach, sofern keine gesetzlichen Aufbewahrungspflichten bestehen.
+    </p>
+
+    <h2 id="sicherheit">10. Datensicherheit</h2>
+    <p>
+      Die Website wird ausschliesslich verschlüsselt über HTTPS ausgeliefert. Wir treffen angemessene technische und
+      organisatorische Massnahmen, um eure Daten vor Verlust und unberechtigtem Zugriff zu schützen.
+    </p>
+
+    <h2 id="rechte">11. Eure Rechte</h2>
+    <p>Im Rahmen des anwendbaren Datenschutzrechts habt ihr insbesondere das Recht,</p>
+    <ul>
+      <li>Auskunft über eure bei uns bearbeiteten Personendaten zu verlangen (Art. 25 DSG),</li>
+      <li>unrichtige Daten berichtigen zu lassen,</li>
+      <li>die Löschung eurer Daten zu verlangen oder der Bearbeitung zu widersprechen,</li>
+      <li>eure Daten in einem gängigen elektronischen Format zu erhalten (Art. 28 DSG).</li>
+    </ul>
+    <p>
+      Schreibt uns dazu an <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Ihr habt ausserdem das Recht, beim
+      Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) Anzeige zu erstatten
+      (<a href="https://www.edoeb.admin.ch" rel="noopener">www.edoeb.admin.ch</a>). Personen in der EU bzw. im EWR können
+      sich an die zuständige Aufsichtsbehörde ihres Landes wenden.
+    </p>
+
+    <h2 id="aenderungen">12. Änderungen</h2>
+    <p>
+      Wir passen diese Datenschutzerklärung an, wenn sich unsere Website oder die eingesetzten Dienste ändern. Es gilt die
+      jeweils hier veröffentlichte Fassung.
+    </p>
+
+    <p class="small mt-5">Stand: {{ site.legalUpdated | dateCH }}</p>
+  </div>
+</section>

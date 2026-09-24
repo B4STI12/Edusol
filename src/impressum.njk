@@ -1,0 +1,53 @@
+---
+layout: layouts/base.njk
+title: Impressum
+description: Impressum von EDUSOL – Angaben zum Anbieter dieser Website und Kontaktadresse nach Art. 3 Abs. 1 lit. s UWG.
+permalink: /impressum.html
+breadcrumb:
+  - name: Impressum
+    url: /impressum.html
+---
+<section class="hero hero--legal">
+  <div class="container px-4 px-lg-5 py-5 measure-wide">
+    <h1 class="heading-page mb-2">Impressum</h1>
+    <p class="lead-text mb-0">Angaben zum Anbieter dieser Website.</p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container px-4 measure-wide legal">
+    {% include "partials/placeholder-note.njk" %}
+
+    <h2>Anbieter und verantwortlich für den Inhalt</h2>
+    {% include "partials/owner-address.njk" %}
+    {%- if site.owner.uid %}
+    <p class="mt-3">Unternehmens-Identifikationsnummer (UID): {{ site.owner.uid }}</p>
+    {%- endif %}
+
+    <h2>Haftung für Inhalte</h2>
+    <p>
+      Wir erstellen die Inhalte dieser Website mit grösster Sorgfalt. Für die Richtigkeit, Vollständigkeit und Aktualität
+      übernehmen wir jedoch keine Gewähr. Haftungsansprüche wegen Schäden materieller oder immaterieller Art, die aus dem
+      Zugriff auf, der Nutzung oder Nichtnutzung der veröffentlichten Informationen entstehen, sind ausgeschlossen, soweit
+      dies gesetzlich zulässig ist.
+    </p>
+
+    <h2>Haftung für Links</h2>
+    <p>
+      Diese Website enthält Links zu Websites Dritter (z. B. LinkedIn). Auf deren Inhalte haben wir keinen Einfluss;
+      verantwortlich ist allein der jeweilige Anbieter. Werden uns rechtswidrige Inhalte bekannt, entfernen wir den
+      betreffenden Link umgehend.
+    </p>
+
+    <h2>Urheberrechte</h2>
+    <p>
+      Texte, Logos, Illustrationen und alle weiteren Inhalte dieser Website gehören EDUSOL oder den ausdrücklich genannten
+      Rechteinhabern. Für die Vervielfältigung oder Verwendung ist die vorgängige schriftliche Zustimmung erforderlich.
+    </p>
+
+    <h2>Datenschutz</h2>
+    <p>Informationen zur Bearbeitung von Personendaten findet ihr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
+
+    <p class="small mt-5">Stand: {{ site.legalUpdated | dateCH }}</p>
+  </div>
+</section>

@@ -1,0 +1,93 @@
+---
+layout: layouts/base.njk
+title: Bildung neu denken
+fullTitle: EDUSOL – Bildung neu denken
+description: EDUSOL begleitet Schulen, NPO und Fachkräfte in Bildung und Entwicklung – mit Coaching, Supervision, Schulentwicklung, Krisenmanagement und Fachvorträgen aus der Praxis.
+permalink: /
+preloadImage: /assets/img/logo-claim.svg
+---
+{%- from "partials/icons.njk" import whatsapp %}
+<section class="hero hero--home">
+  <div class="container px-4 px-lg-5 py-5 measure-wide">
+    <h1 class="mb-5">
+      <img class="hero-logo" src="/assets/img/logo-claim.svg" width="480" height="161" alt="EDUSOL – {{ site.claim }}" fetchpriority="high">
+    </h1>
+    <p class="lead-text fs-5">
+      EDUSOL begleitet Schulen, Teams und Organisationen – mit echten Erfahrungen aus der Praxis. Wir arbeiten täglich in den Bereichen, über die wir sprechen. Keine Theorien von aussen, sondern Lösungen von innen.
+    </p>
+    <p class="mt-4 mb-0">
+      <a class="btn btn-edusol px-5 py-3 fs-6" href="/kontakt.html">Gemeinsam loslegen</a>
+    </p>
+  </div>
+</section>
+
+<section class="py-5 bg-sky-200">
+  <div class="container px-4 px-lg-5">
+    <div class="d-flex align-items-center gap-4 flex-wrap">
+      <img src="/assets/img/eulen/logo.svg" width="79" height="72" alt="">
+      <div>
+        <p class="fw-semibold mb-1 fs-5 text-ink-strong">{{ site.claim }}</p>
+        <p class="mb-0 fw-light text-ink">Bildung, die bewegt. Entwicklung, die wirkt. Lösungen, die bleiben.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-5 bg-white" id="wirkungsfelder" aria-labelledby="wirkungsfelder-title">
+  <div class="container px-4 px-lg-5">
+    <h2 class="heading-section mb-2" id="wirkungsfelder-title">Unsere Wirkungsfelder</h2>
+    <p class="mb-5 text-muted-strong fw-light">Was wir tun – und wie wir wirken.</p>
+    <ul class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-5 g-4 list-unstyled">
+      {%- for field in fields %}
+      <li class="col">
+        <a class="card-field" href="/{{ field.slug }}.html">
+          <img src="/assets/img/eulen/{{ field.slug }}.svg" width="89" height="80" alt="" loading="lazy">
+          <span class="card-field__title d-block field-{{ field.slug }}">{{ field.cardTitle }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="py-5 bg-sky-300">
+  <div class="container px-4 px-lg-5 measure-wide">
+    <h2 class="heading-section mb-3">Wir sind EDUSOL</h2>
+    <p class="lead-text">
+      Wir sind keine Firma, die sich gegründet hat. Wir sind Freunde, die sich gefunden haben – verbunden durch eine gemeinsame Haltung: Wissen, das wirkt, gehört weitergegeben.
+    </p>
+    <a class="btn btn-edusol px-4 py-2 mt-3" href="/ueber-uns.html">Mehr über EDUSOL erfahren</a>
+  </div>
+</section>
+
+<section class="py-5 bg-white" aria-labelledby="einblicke-title">
+  <div class="container px-4 px-lg-5">
+    <h2 class="heading-section mb-2" id="einblicke-title">Einblicke in unsere Arbeit</h2>
+    <p class="mb-5 text-muted-strong fw-light">Was uns bewegt – Eindrücke aus unserem Alltag.</p>
+    <div class="row g-4">
+      {%- set insights = [
+        { "title": "Schulleitung begleiten", "text": "Eine Schulleitung mitten im Wandel – wir haben den Prozess von innen begleitet und gemeinsam Strukturen entwickelt, die tragen." },
+        { "title": "Team in der Krise stärken", "text": "Nach einem kritischen Vorfall brauchte ein Team Klarheit und Halt. In drei Sitzungen fand es zurück zu seiner gemeinsamen Kraft." },
+        { "title": "NPO neu aufstellen", "text": "Ein gemeinnütziger Verein wollte wachsen, ohne sich selbst zu verlieren. Wir haben Strukturen geschaffen, die Werte und Wachstum verbinden." },
+        { "title": "Fachvortrag mit Wirkung", "text": "Kein klassischer Frontalvortrag – sondern ein Impulsgespräch, das ein Kollegium noch Wochen später beschäftigt hat." }
+      ] %}
+      {%- for item in insights %}
+      <div class="col-md-6 col-lg-3">
+        <div class="card-soft bg-sky-100">
+          <h3 class="fs-6 fw-semibold text-primary-strong mb-2">{{ item.title }}</h3>
+          <p>{{ item.text }}</p>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+    {%- if site.whatsapp %}
+    <div class="mt-5">
+      <p class="fw-semibold mb-3">Noch mehr Einblicke auf WhatsApp:</p>
+      <a class="btn btn-whatsapp px-4 py-2 d-inline-flex align-items-center gap-2" href="https://wa.me/{{ site.whatsapp }}" rel="noopener" target="_blank">
+        {{ whatsapp() }}
+        Schreib uns auf WhatsApp<span class="visually-hidden"> (öffnet in neuem Tab)</span>
+      </a>
+    </div>
+    {%- endif %}
+  </div>
+</section>

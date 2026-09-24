@@ -1,0 +1,94 @@
+---
+layout: layouts/base.njk
+title: Gemeinsam loslegen
+fullTitle: Kontakt – Gemeinsam loslegen mit EDUSOL
+description: Nehmt Kontakt mit EDUSOL auf – wir beraten euch gerne zu Coaching, Supervision, Schulentwicklung, Krisenmanagement, NPO-Beratung und Fachvorträgen.
+permalink: /kontakt.html
+pageScript: /assets/js/contact-form.js
+breadcrumb:
+  - name: Kontakt
+    url: /kontakt.html
+---
+<section class="hero hero--page">
+  <div class="container px-4 px-lg-5 py-5 measure-narrow">
+    <p class="eyebrow mb-3">Wir freuen uns, von euch zu hören</p>
+    <h1 class="heading-page mb-3">Gemeinsam loslegen</h1>
+    <p class="lead-text mb-0">
+      Habt ihr Fragen, möchtet ihr ein Angebot anfragen oder einfach mehr über EDUSOL erfahren? Schreibt uns – wir melden uns innerhalb von 48 Stunden.
+    </p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container px-4 measure-narrow">
+    <div class="form-panel p-4 p-md-5">
+      <h2 class="fw-bold fs-4 mb-3">Schreibt uns direkt</h2>
+      <p class="text-muted-strong fw-light-text">
+        Füllt das Formular aus oder schreibt eine E-Mail an
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+        Alle Felder ohne den Zusatz «optional» sind Pflichtfelder.
+      </p>
+      <hr class="my-4">
+
+      <div id="form-status" class="form-status mb-4" role="status" aria-live="polite" tabindex="-1" hidden></div>
+
+      <form id="contact-form" action="{{ site.formAction }}" method="POST" data-fallback-email="{{ site.email }}">
+        <input type="hidden" name="_subject" value="Neue Anfrage über edusol.ch">
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Dieses Feld bitte leer lassen</label>
+          <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="row g-3">
+          <div class="col-sm-6">
+            <label for="vorname" class="form-label fw-semibold small">Vorname</label>
+            <input type="text" class="form-control" id="vorname" name="vorname" autocomplete="given-name" required aria-describedby="vorname-error">
+            <p class="field-error" id="vorname-error" hidden></p>
+          </div>
+          <div class="col-sm-6">
+            <label for="nachname" class="form-label fw-semibold small">Nachname</label>
+            <input type="text" class="form-control" id="nachname" name="nachname" autocomplete="family-name" required aria-describedby="nachname-error">
+            <p class="field-error" id="nachname-error" hidden></p>
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label fw-semibold small">E-Mail</label>
+            <input type="email" class="form-control" id="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="email-hint email-error">
+            <p class="form-text small mb-0" id="email-hint">Zum Beispiel name@schule.ch</p>
+            <p class="field-error" id="email-error" hidden></p>
+          </div>
+          <div class="col-12">
+            <label for="telefon" class="form-label fw-semibold small">Telefon <span class="optional-hint">(optional)</span></label>
+            <input type="tel" class="form-control" id="telefon" name="telefon" autocomplete="tel">
+          </div>
+          <div class="col-12">
+            <label for="organisation" class="form-label fw-semibold small">Organisation / Institution <span class="optional-hint">(optional)</span></label>
+            <input type="text" class="form-control" id="organisation" name="organisation" autocomplete="organization">
+          </div>
+          <div class="col-12">
+            <label for="betreff" class="form-label fw-semibold small">Thema</label>
+            <select class="form-select" id="betreff" name="betreff" required aria-describedby="betreff-error">
+              <option value="" selected disabled>Bitte wählen …</option>
+              {%- for field in fields %}
+              <option value="{{ field.title }}">{{ field.title }}</option>
+              {%- endfor %}
+              <option value="Anderes">Anderes</option>
+            </select>
+            <p class="field-error" id="betreff-error" hidden></p>
+          </div>
+          <div class="col-12">
+            <label for="nachricht" class="form-label fw-semibold small">Nachricht</label>
+            <textarea class="form-control" id="nachricht" name="nachricht" rows="5" required aria-describedby="nachricht-error"></textarea>
+            <p class="field-error" id="nachricht-error" hidden></p>
+          </div>
+          <div class="col-12 mt-3">
+            <p class="small text-muted-strong mb-3">
+              Eure Angaben werden über den Formulardienst Formspree (USA) an uns übermittelt und nur zur Bearbeitung eurer Anfrage verwendet.
+              Details findet ihr in der <a href="/datenschutz.html#kontaktformular">Datenschutzerklärung</a>.
+            </p>
+            <button type="submit" class="btn btn-edusol px-4 py-2">Nachricht senden</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

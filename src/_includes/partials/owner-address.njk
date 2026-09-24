@@ -1,0 +1,8 @@
+<address class="mb-0">
+  {{ site.owner.name }}<br>
+  {{ site.owner.street }}<br>
+  {{ site.owner.city }}<br>
+  {{ site.owner.country }}<br>
+  E-Mail: <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+  {%- if site.phone %}<br>Telefon: <a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a>{% endif %}
+</address>
