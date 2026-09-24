@@ -46,22 +46,16 @@
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
+  {%- if not hideCrisisBar %}
+  {% include "partials/crisis-bar.njk" %}
+  {%- endif %}
   {% include "partials/header.njk" %}
 
   <main id="main" tabindex="-1">
-    {%- if breadcrumb %}
-    <nav class="breadcrumb-bar" aria-label="Brotkrümelpfad">
-      <div class="container px-4 px-lg-5">
-        <ol>
-          <li><a href="/">Startseite</a></li>
-          {%- for crumb in breadcrumb %}
-          <li>{% if loop.last %}<span aria-current="page">{{ crumb.name }}</span>{% else %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% endif %}</li>
-          {%- endfor %}
-        </ol>
-      </div>
-    </nav>
-    {%- endif %}
     {{ content | safe }}
+    {%- if not hideCta %}
+    {% include "partials/cta.njk" %}
+    {%- endif %}
   </main>
 
   {% include "partials/footer.njk" %}

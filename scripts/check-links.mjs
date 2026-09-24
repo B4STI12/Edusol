@@ -28,7 +28,8 @@ for (const file of htmlFiles) {
   const refs = [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
   for (const ref of refs) {
     if (/^(https?:|mailto:|tel:|data:)/.test(ref)) continue;
-    const [rawPath, hash] = ref.split("#");
+    const [withoutHash, hash] = ref.split("#");
+    const rawPath = withoutHash.split("?")[0];
     let target;
     if (rawPath === "") {
       target = file;

@@ -2,27 +2,26 @@
 layout: layouts/base.njk
 title: Impressum
 fullTitle: Impressum und Anbieterangaben – EDUSOL
-description: Impressum von EDUSOL – Angaben zum Anbieter dieser Website, Kontaktadresse und E-Mail nach Art. 3 Abs. 1 lit. s UWG, Haftung und Urheberrecht.
+description: Impressum von EDUSOL – Angaben zum Verein als Anbieter dieser Website, Kontaktadresse und E-Mail nach Art. 3 Abs. 1 lit. s UWG, Haftung und Urheberrecht.
+hideCta: true
 permalink: /impressum.html
-breadcrumb:
-  - name: Impressum
-    url: /impressum.html
 ---
-<section class="hero hero--legal">
-  <div class="container px-4 px-lg-5 py-5 measure-wide">
-    <h1 class="heading-page mb-2">Impressum</h1>
-    <p class="lead-text mb-0">Angaben zum Anbieter dieser Website.</p>
+<section class="hero hero--page">
+  <div class="container container--narrow hero__inner stack stack-md">
+    <h1 class="h-page">Impressum</h1>
+    <p class="lead">Angaben zum Anbieter dieser Website.</p>
   </div>
 </section>
 
-<section class="py-5 bg-white">
-  <div class="container px-4 measure-wide legal">
+<section class="section section--white">
+  <div class="container container--narrow legal">
     {% include "partials/placeholder-note.njk" %}
 
     <h2>Anbieter und verantwortlich für den Inhalt</h2>
     {% include "partials/owner-address.njk" %}
+    <p>Vertretungsberechtigt: {{ site.owner.representatives }}</p>
     {%- if site.owner.uid %}
-    <p class="mt-3">Unternehmens-Identifikationsnummer (UID): {{ site.owner.uid }}</p>
+    <p>Unternehmens-Identifikationsnummer (UID): {{ site.owner.uid }}</p>
     {%- endif %}
 
     <h2>Haftung für Inhalte</h2>
@@ -49,6 +48,6 @@ breadcrumb:
     <h2>Datenschutz</h2>
     <p>Informationen zur Bearbeitung von Personendaten findet ihr in der <a href="/datenschutz.html">Datenschutzerklärung</a>.</p>
 
-    <p class="small mt-5">Stand: {{ site.legalUpdated | dateCH }}</p>
+    <p class="hint">Stand: {{ site.legalUpdated | dateCH }}</p>
   </div>
 </section>

@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+title: Einblicke
+fullTitle: Einblicke – Beispiele aus unserer Praxis – EDUSOL
+description: Einblicke in die Arbeit von EDUSOL – wie wir Schulleitungen, Teams in Krisen, NPO und Kollegien begleiten. Eindrücke aus unserem Alltag.
+permalink: /einblicke.html
+---
+<section class="hero hero--page">
+  <div class="container hero__inner stack stack-md">
+    <p class="eyebrow">Aus der Praxis</p>
+    <h1 class="h-page">Einblicke</h1>
+    <p class="lead">Was uns bewegt – Eindrücke aus unserem Alltag.</p>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container">
+    <ul class="story-grid">
+      {%- for s in stories %}
+      {%- set f = s.field | field(fields) %}
+      <li class="theme-{{ f.slug }}">
+        <a class="story" href="/{{ f.slug }}.html">
+          <span class="chip-field"><img src="/assets/img/eulen/{{ f.slug }}.svg" width="24" height="22" alt="">{{ f.menuTitle }}</span>
+          <h2>{{ s.title }}</h2>
+          <p>{{ s.text }}</p>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>

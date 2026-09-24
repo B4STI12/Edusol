@@ -1,41 +1,41 @@
-// Navigation nach dem WAI-ARIA-Disclosure-Muster (ersetzt Bootstrap-JS).
+// Navigation nach dem WAI-ARIA-Disclosure-Muster: Hamburger-Menü und Mega-Menü.
 (() => {
-  const setOpen = (button, target, open) => {
-    button.setAttribute("aria-expanded", String(open));
-    target.classList.toggle("show", open);
-  };
+  document.documentElement.classList.add("js");
 
-  const toggles = [...document.querySelectorAll("[data-toggle]")].map((button) => {
-    const target = document.getElementById(button.getAttribute("aria-controls"));
-    return { button, target, kind: button.dataset.toggle };
-  });
-
-  for (const { button, target } of toggles) {
-    if (!target) continue;
-    button.addEventListener("click", () => {
-      setOpen(button, target, button.getAttribute("aria-expanded") !== "true");
+  const navToggle = document.querySelector('[data-toggle="nav"]');
+  const nav = navToggle && document.getElementById(navToggle.getAttribute("aria-controls"));
+  if (navToggle && nav) {
+    navToggle.addEventListener("click", () => {
+      const open = navToggle.getAttribute("aria-expanded") !== "true";
+      navToggle.setAttribute("aria-expanded", String(open));
+      nav.classList.toggle("is-open", open);
     });
   }
 
-  const dropdowns = toggles.filter((t) => t.kind === "dropdown" && t.target);
+  const menuItem = document.querySelector("[data-menu]");
+  const menuButton = menuItem?.querySelector('[data-toggle="menu"]');
+  const menu = menuButton && document.getElementById(menuButton.getAttribute("aria-controls"));
+  if (!menuItem || !menuButton || !menu) return;
+
+  const setMenu = (open) => {
+    menuButton.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+  };
+
+  menuButton.addEventListener("click", () => setMenu(menuButton.getAttribute("aria-expanded") !== "true"));
 
   document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    for (const { button, target } of dropdowns) {
-      if (button.getAttribute("aria-expanded") === "true") {
-        setOpen(button, target, false);
-        button.focus();
-      }
+    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+      setMenu(false);
+      menuButton.focus();
     }
   });
 
-  for (const { button, target } of dropdowns) {
-    const container = button.parentElement;
-    document.addEventListener("click", (event) => {
-      if (!container.contains(event.target)) setOpen(button, target, false);
-    });
-    container.addEventListener("focusout", (event) => {
-      if (event.relatedTarget && !container.contains(event.relatedTarget)) setOpen(button, target, false);
-    });
-  }
+  document.addEventListener("click", (event) => {
+    if (!menuItem.contains(event.target)) setMenu(false);
+  });
+
+  menuItem.addEventListener("focusout", (event) => {
+    if (event.relatedTarget && !menuItem.contains(event.relatedTarget)) setMenu(false);
+  });
 })();

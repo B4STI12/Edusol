@@ -7,7 +7,7 @@ module.exports = {
     collect: {
       startServerCommand: "node scripts/serve.mjs",
       startServerReadyPattern: "Server läuft",
-      url: [base, `${base}kontakt.html`, `${base}npo.html`],
+      url: [base, `${base}kontakt.html`, `${base}npo.html`, `${base}ueber-uns.html`],
       numberOfRuns: 3,
       settings: {
         chromeFlags: "--no-sandbox --headless=new",

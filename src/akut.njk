@@ -1,0 +1,69 @@
+---
+layout: layouts/base.njk
+title: Akut-Hilfe
+fullTitle: Akut-Hilfe bei Krisen in Schule und Team – EDUSOL
+description: Akute Krise im Team oder an der Schule? Ruft EDUSOL direkt an – Montag bis Freitag, 8 bis 17 Uhr. Bei Gefahr für Leib und Leben sofort Notruf 112.
+permalink: /akut.html
+hideCrisisBar: true
+hideCta: true
+---
+{%- set phoneDisplay = site.akutPhone or "[Platzhalter – Telefonnummer für Akut-Hilfe]" %}
+<section class="akut-hero on-dark">
+  <div class="container akut-hero__inner">
+    <div class="stack stack-md">
+      <div class="cluster">
+        <img class="akut-hero__owl" src="/assets/img/eulen/krisenmanagement.svg" width="48" height="48" alt="">
+        <p class="eyebrow">Akut-Hilfe · Krisenmanagement</p>
+      </div>
+      <h1>Es brennt? Wir sind für euch da.</h1>
+      <p>Akute Anfragen nehmen wir telefonisch entgegen – {{ site.akutHours }}. So können wir die Lage sofort gemeinsam einschätzen.</p>
+    </div>
+    <div class="emergency" role="note">
+      <strong>Besteht Gefahr für Leib und Leben?</strong>
+      <p>Ruft sofort den Notruf: <a href="tel:112">112</a> · Polizei <a href="tel:117">117</a> · Sanität <a href="tel:144">144</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="container contact-layout">
+    <div class="contact-layout__main stack stack-xl">
+      <div class="akut-call">
+        <h2 class="h-small">Ruft uns direkt an</h2>
+        {%- if site.akutPhone %}
+        <a class="akut-call__number" href="tel:{{ site.akutPhone | replace(' ', '') }}">{{ site.akutPhone }}</a>
+        {%- else %}
+        <p class="akut-call__number">{{ phoneDisplay }}</p>
+        {%- endif %}
+        <p class="akut-call__hours">Erreichbar {{ site.akutHours }}.</p>
+        <p>Ausserhalb dieser Zeiten nehmen wir keine Anrufe entgegen. Schreibt uns dann eine kurze E-Mail an <a href="mailto:{{ site.email }}">{{ site.email }}</a> – ohne Namen oder Details zu betroffenen Personen – und wir melden uns am nächsten Werktag ab 8 Uhr.</p>
+      </div>
+
+      <div class="stack stack-md">
+        <h2 class="h-small">Ausserhalb unserer Bürozeiten</h2>
+        <p class="subtitle">Diese Stellen sind rund um die Uhr erreichbar:</p>
+        <ul class="helplines">
+          <li class="helpline"><a href="tel:112">112</a><span>Notruf bei Gefahr für Leib und Leben</span></li>
+          <li class="helpline"><a href="tel:143">143</a><span>Die Dargebotene Hand – Gespräch in Krisen</span></li>
+          <li class="helpline"><a href="tel:147">147</a><span>Pro Juventute – Beratung für Kinder und Jugendliche</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <aside class="contact-layout__aside" aria-label="Ablauf und Alternativen">
+      <div class="panel panel--crisis">
+        <h2>So läuft es ab</h2>
+        <ol class="steps steps--compact">
+          <li class="steps__item"><span class="num num--crisis" aria-hidden="true">1</span><p><strong>Anruf</strong> Ihr erreicht direkt eine Krisenverantwortliche.</p></li>
+          <li class="steps__item"><span class="num num--crisis" aria-hidden="true">2</span><p><strong>Lage einschätzen</strong> Gemeinsam klären, was jetzt zählt.</p></li>
+          <li class="steps__item"><span class="num num--crisis" aria-hidden="true">3</span><p><strong>Sofortmassnahmen</strong> Begleitung vor Ort oder per Telefon.</p></li>
+        </ol>
+      </div>
+      <div class="panel panel--line">
+        <h2>Nicht akut?</h2>
+        <p>Für Prävention oder Nachbearbeitung nutzt das normale Formular.</p>
+        <a class="link-arrow" href="/kontakt.html?thema=krisenmanagement">Zum Kontaktformular →</a>
+      </div>
+    </aside>
+  </div>
+</section>

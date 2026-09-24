@@ -1,5 +1,5 @@
-{%- if site.owner.name.startsWith("[") or site.owner.street.startsWith("[") or site.owner.city.startsWith("[") %}
-<p class="placeholder-note mt-4">
+{%- if site.owner.name.startsWith("[") or site.owner.seat.startsWith("[") or site.owner.street.startsWith("[") or site.owner.city.startsWith("[") or site.owner.representatives.startsWith("[") %}
+<p class="placeholder-note">
   Hinweis: Die Angaben zur verantwortlichen Stelle werden derzeit ergänzt.
   Bis dahin erreicht ihr uns unter <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
 </p>
