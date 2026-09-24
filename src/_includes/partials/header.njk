@@ -5,16 +5,16 @@
     <a class="navbar-brand" href="/">
       <img src="/assets/img/logo.svg" alt="EDUSOL – zur Startseite" width="138" height="35">
     </a>
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Menü öffnen">
+    <button class="navbar-toggler border-0" type="button" data-toggle="nav" aria-controls="navbarMain" aria-expanded="false" aria-label="Menü">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 pt-3 pt-lg-0">
         <li class="nav-item dropdown">
-          <button class="nav-link fw-semibold px-3 dropdown-toggle border-0 bg-transparent{% if fieldActive %} active{% endif %}" type="button" id="wirkungsfelderDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="nav-link fw-semibold px-3 dropdown-toggle border-0 bg-transparent{% if fieldActive %} active{% endif %}" type="button" id="wirkungsfelderDropdown" data-toggle="dropdown" aria-controls="wirkungsfelderMenu" aria-expanded="false">
             Wirkungsfelder
           </button>
-          <ul class="dropdown-menu dropdown-menu-lg-end border-0 shadow rounded-3 p-2 mt-1" aria-labelledby="wirkungsfelderDropdown">
+          <ul class="dropdown-menu dropdown-menu-lg-end border-0 shadow rounded-3 p-2 mt-1" id="wirkungsfelderMenu">
             {%- for field in fields %}
             {%- set href = "/" + field.slug + ".html" %}
             <li>

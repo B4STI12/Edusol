@@ -5,6 +5,7 @@
   permalink: (data) => `/${data.field.slug}.html`,
   eleventyComputed: {
     title: (data) => data.field.title,
+    fullTitle: (data) => data.field.seoTitle,
     description: (data) => data.field.description,
     preloadImage: (data) => `/assets/img/fachgebiete/${data.field.slug}.svg`,
     breadcrumb: (data) => [{ name: data.field.title, url: `/${data.field.slug}.html` }],
@@ -13,7 +14,6 @@
 ---
 <section class="hero hero--field">
   <div class="container px-4 px-lg-5 py-5 text-center">
-    <p class="mb-4"><a class="back-link" href="/#wirkungsfelder">← Zurück zur Übersicht</a></p>
     <h1 class="mb-0">
       <img class="field-hero-img" src="/assets/img/fachgebiete/{{ field.slug }}.svg" width="{{ field.heroWidth }}" height="{{ field.heroHeight }}" alt="{{ field.title }}" fetchpriority="high">
     </h1>
@@ -22,8 +22,8 @@
 </section>
 
 <section class="py-5 bg-white">
-  <div class="container px-4 py-4 text-center measure">
-    <h2 class="fw-bold mb-4">{{ field.heading }}</h2>
+  <div class="container px-4 py-4 measure">
+    <h2 class="fw-bold mb-4 text-center">{{ field.heading }}</h2>
     <p class="text-muted-strong fw-light-text">{{ field.body }}</p>
   </div>
 </section>

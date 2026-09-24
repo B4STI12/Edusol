@@ -7,11 +7,12 @@ Statische Website von EDUSOL, gebaut mit [Eleventy](https://www.11ty.dev/) und a
 ```bash
 npm ci
 npm start          # Dev-Server mit Live-Reload auf http://localhost:8080
-npm test           # Build + HTML-Validierung + Linkcheck + axe (WCAG 2.2 AA)
+npm test           # Build + HTML-Validierung + Linkcheck + axe + Formular-E2E
+npx @lhci/cli@0.15.1 autorun   # Lighthouse mit Budgets (LCP ≤ 2,5 s, CLS ≤ 0,1, JS ≤ 20 KB …)
 ```
 
-Für `npm run check:a11y` wird Chromium benötigt (`npx playwright install chromium`
-oder `CHROMIUM_PATH=/pfad/zu/chromium`).
+Für axe, Formular-Test und Lighthouse wird Chromium benötigt (`npx playwright install chromium`
+bzw. `CHROMIUM_PATH=…` / `CHROME_PATH=…`).
 
 ## Struktur
 
@@ -27,12 +28,18 @@ oder `CHROMIUM_PATH=/pfad/zu/chromium`).
 
 Navbar und Footer existieren nur einmal (`src/_includes/partials/`).
 Inline-Styles sind per `html-validate` verboten, damit die CSP ohne `'unsafe-inline'` auskommt.
+Beim Build werden Bootstrap-CSS und `main.css` gebündelt, ungenutzte Regeln per PurgeCSS entfernt
+und mit Lightning CSS minifiziert (`assets/css/site.css`). Klassen, die erst per JavaScript gesetzt
+werden, müssen in `eleventy.config.js` auf die Safelist.
 
 ## Deployment
 
 Jeder Push auf `main` baut, prüft und deployt über `.github/workflows/deploy.yml`.
 Basis-URL und Pfad-Präfix kommen automatisch aus `actions/configure-pages` –
 bei einer eigenen Domain muss am Code nichts geändert werden.
+
+**Rollback:** Commit auf `main` reverten oder unter *Actions* den letzten funktionierenden
+„Build & Deploy“-Lauf erneut ausführen.
 
 ## Vor dem Go-live
 

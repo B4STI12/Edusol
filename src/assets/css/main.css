@@ -39,6 +39,16 @@
   src: url("../fonts/poppins-latin-700-normal.woff2") format("woff2");
 }
 
+/* Metrisch angeglichener Fallback gegen Layout-Shift (Werte: @capsizecss/metrics) */
+@font-face {
+  font-family: "Poppins Fallback";
+  src: local("Arial"), local("ArialMT");
+  ascent-override: 93.6182%;
+  descent-override: 31.2061%;
+  line-gap-override: 8.916%;
+  size-adjust: 112.1577%;
+}
+
 :root {
   color-scheme: light;
 
@@ -71,7 +81,7 @@
   --radius-md: 1rem;
   --radius-lg: 1.5rem;
 
-  --font-sans: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-sans: "Poppins", "Poppins Fallback", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --bs-body-font-family: var(--font-sans);
   --bs-body-color: var(--c-text);
@@ -96,7 +106,8 @@ body {
 h1,
 h2,
 h3 {
-  hyphens: manual;
+  hyphens: auto;
+  overflow-wrap: normal;
 }
 
 /* ---------- Fokus & Skip-Link ---------- */
@@ -149,9 +160,9 @@ h3 {
   line-height: 1.85;
 }
 
-.measure { max-width: 45rem; }
+.measure { max-width: 40rem; }        /* ≈ 70 Zeichen */
 .measure-narrow { max-width: 42.5rem; }
-.measure-wide { max-width: 50rem; }
+.measure-wide { max-width: 42rem; }
 .measure-lead { max-width: 32.5rem; }
 
 .heading-section {
@@ -286,8 +297,43 @@ h3 {
 
 .field-hero-img {
   width: auto;
-  height: 200px;
+  height: auto;
   max-width: 100%;
+  max-height: 160px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.breadcrumb-bar {
+  background-color: var(--c-sky-300);
+  font-size: 0.875rem;
+}
+
+.breadcrumb-bar ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  margin: 0;
+  padding: 1rem 0 0;
+  list-style: none;
+}
+
+.breadcrumb-bar li + li::before {
+  content: "›";
+  margin-inline-end: 0.5rem;
+  color: var(--c-ink);
+}
+
+.breadcrumb-bar a {
+  color: var(--c-primary-text);
+  font-weight: 600;
+}
+
+.breadcrumb-bar [aria-current="page"] {
+  color: var(--c-ink);
 }
 
 .back-link {
@@ -349,7 +395,7 @@ h3 {
 }
 
 .card-soft p {
-  font-size: 0.925rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.7;
   color: var(--c-muted);

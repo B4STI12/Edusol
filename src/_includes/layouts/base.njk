@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {#- GitHub Pages erlaubt keine eigenen HTTP-Header; frame-ancestors und Reporting wirken erst als Header. #}
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; base-uri 'none'; object-src 'none'; require-trusted-types-for 'script'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   {%- set pageTitle = fullTitle or (title + " – " + site.name) %}
   {%- set canonical = page.url | absoluteUrl(site.url) %}
@@ -36,8 +36,7 @@
 
   <link rel="preload" href="/assets/fonts/poppins-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/assets/vendor/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
   {%- if preloadImage %}
   <link rel="preload" href="{{ preloadImage }}" as="image" type="image/svg+xml" fetchpriority="high">
   {%- endif %}
@@ -50,12 +49,24 @@
   {% include "partials/header.njk" %}
 
   <main id="main" tabindex="-1">
+    {%- if breadcrumb %}
+    <nav class="breadcrumb-bar" aria-label="Brotkrümelpfad">
+      <div class="container px-4 px-lg-5">
+        <ol>
+          <li><a href="/">Startseite</a></li>
+          {%- for crumb in breadcrumb %}
+          <li>{% if loop.last %}<span aria-current="page">{{ crumb.name }}</span>{% else %}<a href="{{ crumb.url }}">{{ crumb.name }}</a>{% endif %}</li>
+          {%- endfor %}
+        </ol>
+      </div>
+    </nav>
+    {%- endif %}
     {{ content | safe }}
   </main>
 
   {% include "partials/footer.njk" %}
 
-  <script src="/assets/vendor/bootstrap.bundle.min.js" defer></script>
+  <script src="/assets/js/nav.js" defer></script>
   {%- if pageScript %}
   <script src="{{ pageScript }}" defer></script>
   {%- endif %}
