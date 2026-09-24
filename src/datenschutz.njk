@@ -39,6 +39,18 @@ permalink: /datenschutz.html
     </p>
 
     <h2 id="hosting">3. Hosting und Server-Logfiles</h2>
+    {%- if site.hosting == "vercel" %}
+    <p>
+      Diese Website wird bei <strong>Vercel</strong> der Vercel Inc., USA, gehostet und über deren weltweites
+      Servernetz ausgeliefert. Beim Aufruf einer Seite verarbeitet Vercel technisch notwendige Daten, insbesondere die
+      IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Adresse, die zuvor besuchte Seite (Referrer) sowie
+      Angaben zu Browser und Betriebssystem. Diese Daten dienen der Auslieferung der Website und der Abwehr von Angriffen.
+      Vercel handelt dabei als Auftragsbearbeiter.
+    </p>
+    <p>
+      Weitere Informationen: <a href="https://vercel.com/legal/privacy-notice" rel="noopener">Datenschutzerklärung von Vercel</a>.
+    </p>
+    {%- else %}
     <p>
       Diese Website wird über <strong>GitHub Pages</strong> der GitHub Inc., 88 Colin P. Kelly Jr. Street,
       San Francisco, CA 94107, USA, bereitgestellt. Beim Aufruf einer Seite verarbeitet GitHub technisch notwendige
@@ -49,6 +61,7 @@ permalink: /datenschutz.html
     <p>
       Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">Datenschutzerklärung von GitHub</a>.
     </p>
+    {%- endif %}
 
     <h2 id="kontaktformular">4. Kontaktformular</h2>
     <p>
@@ -100,7 +113,8 @@ permalink: /datenschutz.html
 
     <h2 id="ausland">9. Bekanntgabe ins Ausland</h2>
     <p>
-      GitHub und Formspree haben ihren Sitz in den USA. Die GitHub Inc. ist unter dem Swiss-U.S. Data Privacy Framework
+      {{ "Vercel" if site.hosting == "vercel" else "GitHub" }} und Formspree haben ihren Sitz in den USA.
+      Die {{ "Vercel Inc." if site.hosting == "vercel" else "GitHub Inc." }} ist unter dem Swiss-U.S. Data Privacy Framework
       zertifiziert, das der Bundesrat als angemessenen Datenschutz anerkennt. Für Formspree erfolgt die Bekanntgabe auf
       Grundlage von Standardvertragsklauseln (Art. 16 Abs. 2 lit. d DSG). Zum Sitz unseres E-Mail-Anbieters siehe Ziffer 5.
     </p>

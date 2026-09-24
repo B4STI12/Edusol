@@ -38,6 +38,21 @@ und als `assets/css/site.css` ausgeliefert.
 
 ## Deployment
 
+### Vercel (empfohlen)
+
+`vercel.json` enthält Build-Einstellungen und die Security-Header (CSP inkl. `frame-ancestors`, HSTS,
+`nosniff`, `Permissions-Policy` …). Einrichtung einmalig im Vercel-Dashboard:
+
+1. *Add New → Project* → Repository `BastianBinus/Edusol` importieren (Framework: *Other*; der Rest kommt aus `vercel.json`).
+2. Deployen. Jeder Push auf `main` geht live, jeder Pull Request bekommt ein Preview (automatisch `noindex`).
+3. Eigene Domain unter *Settings → Domains* hinzufügen. `SITE_URL` nur setzen, falls die Domain nicht die
+   Produktions-Domain des Projekts ist.
+
+Hinweis: Der Hobby-Plan ist nur für nicht-kommerzielle Nutzung erlaubt – für EDUSOL braucht es Pro.
+Die Datenschutzerklärung nennt beim Build auf Vercel automatisch Vercel als Hoster.
+
+### GitHub Pages (bisher)
+
 Jeder Push auf `main` baut, prüft und deployt über `.github/workflows/deploy.yml`.
 Basis-URL und Pfad-Präfix kommen automatisch aus `actions/configure-pages` –
 bei einer eigenen Domain muss am Code nichts geändert werden.

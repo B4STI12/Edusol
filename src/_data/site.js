@@ -1,14 +1,23 @@
 // Zentrale Stammdaten. Werte in [eckigen Klammern] sind Platzhalter und
 // werden von `npm run check:placeholders` gemeldet.
+
+// Vercel setzt diese Variablen beim Build automatisch.
+const onVercel = Boolean(process.env.VERCEL);
+const vercelUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : undefined;
+
 export default {
   name: "EDUSOL",
   claim: "Wir machen morgen möglich.",
   lang: "de-CH",
   locale: "de_CH",
-  // Wird im Deploy-Workflow aus actions/configure-pages gesetzt.
-  url: process.env.SITE_URL || "http://localhost:8080",
-  // Nur auf dem finalen Host indexieren lassen.
-  noindex: process.env.SITE_NOINDEX === "true",
+  // SITE_URL (GitHub Pages / eigene Domain) oder die Produktions-Domain von Vercel.
+  url: process.env.SITE_URL || vercelUrl || "http://localhost:8080",
+  // Vercel-Previews und explizit gesperrte Builds nicht indexieren lassen.
+  noindex: process.env.SITE_NOINDEX === "true" || process.env.VERCEL_ENV === "preview",
+  // Bestimmt den Hosting-Abschnitt der Datenschutzerklärung.
+  hosting: onVercel ? "vercel" : "github-pages",
   email: "info@edusol.ch",
   securityEmail: "info@edusol.ch",
   phone: "",
