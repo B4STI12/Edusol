@@ -3,26 +3,25 @@ layout: layouts/base.njk
 title: Datenschutzerklärung
 fullTitle: Datenschutzerklärung nach Schweizer DSG – EDUSOL
 description: Datenschutzerklärung von EDUSOL – welche Personendaten wir beim Besuch der Website und bei Kontaktanfragen bearbeiten und welche Rechte ihr habt.
+hideCta: true
 permalink: /datenschutz.html
-breadcrumb:
-  - name: Datenschutz
-    url: /datenschutz.html
 ---
-<section class="hero hero--legal">
-  <div class="container px-4 px-lg-5 py-5 measure-wide">
-    <h1 class="heading-page mb-2">Datenschutz&shy;erklärung</h1>
-    <p class="lead-text mb-0">Wie wir mit euren Personendaten umgehen – kurz und transparent.</p>
+<section class="hero hero--page">
+  <div class="container container--narrow hero__inner stack stack-md">
+    <h1 class="h-page">Datenschutz&shy;erklärung</h1>
+    <p class="lead">Wie wir mit euren Personendaten umgehen – kurz und transparent.</p>
   </div>
 </section>
 
-<section class="py-5 bg-white">
-  <div class="container px-4 measure-wide legal">
+<section class="section section--white">
+  <div class="container container--narrow legal">
     {% include "partials/placeholder-note.njk" %}
 
     <h2 id="kurzfassung">Das Wichtigste in Kürze</h2>
     <ul>
       <li>Wir setzen <strong>keine Cookies</strong>, kein Tracking und keine Analyse-Tools ein.</li>
       <li>Schriften und Skripte liegen auf unserem eigenen Webspace; beim Seitenaufruf werden keine Daten an Google oder andere CDN übertragen.</li>
+      <li>Akute Anfragen nehmen wir nur telefonisch entgegen, nicht über ein Formular.</li>
       <li>Personendaten bearbeiten wir nur, wenn ihr uns über das Kontaktformular oder per E-Mail schreibt, sowie in technisch notwendigen Server-Logs unseres Hosting-Anbieters.</li>
     </ul>
 
@@ -73,6 +72,13 @@ breadcrumb:
       eurer Anfrage.
     </p>
 
+    <h3 id="akut">Akut-Hilfe per Telefon</h3>
+    <p>
+      Für akute Krisen bieten wir bewusst kein Online-Formular an. Ruft ihr uns an, notieren wir nur, was für die
+      Unterstützung nötig ist. Bitte sendet uns per E-Mail keine Namen oder Details zu betroffenen Personen, insbesondere
+      keine Angaben zur Gesundheit.
+    </p>
+
     <h2 id="externe-links">6. Links zu Drittanbietern</h2>
     <p>
       Wir verlinken auf unser Profil bei LinkedIn{% if site.whatsapp %} und auf WhatsApp{% endif %}. Es handelt sich um
@@ -82,8 +88,8 @@ breadcrumb:
 
     <h2 id="cookies">7. Cookies, Tracking und externe Ressourcen</h2>
     <p>
-      Diese Website setzt keine Cookies und verwendet weder Analyse- noch Werbedienste. Schriftarten (Poppins) und
-      Bibliotheken (Bootstrap) werden von unserem eigenen Webspace geladen, nicht von externen Servern.
+      Diese Website setzt keine Cookies und verwendet weder Analyse- noch Werbedienste. Schriftarten (Poppins),
+      Stylesheets und Skripte werden von unserem eigenen Webspace geladen, nicht von externen Servern.
     </p>
 
     <h2 id="ausland">8. Bekanntgabe ins Ausland</h2>
@@ -126,6 +132,6 @@ breadcrumb:
       jeweils hier veröffentlichte Fassung.
     </p>
 
-    <p class="small mt-5">Stand: {{ site.legalUpdated | dateCH }}</p>
+    <p class="hint">Stand: {{ site.legalUpdated | dateCH }}</p>
   </div>
 </section>

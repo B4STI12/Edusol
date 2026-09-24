@@ -25,7 +25,9 @@
     "heroWidth": 1369,
     "heroHeight": 160,
     "cardTitle": "Coaching & Super­vision",
-    "seoTitle": "Coaching & Supervision für Schulen und Teams – EDUSOL"
+    "seoTitle": "Coaching & Supervision für Schulen und Teams – EDUSOL",
+    "tint": "#e3f0ea",
+    "menuTitle": "Coaching & Supervision"
   },
   {
     "slug": "fachvortraege",
@@ -53,7 +55,9 @@
     "heroWidth": 819,
     "heroHeight": 160,
     "cardTitle": "Fach­vorträge",
-    "seoTitle": "Fachvorträge und Weiterbildung für Schulen – EDUSOL"
+    "seoTitle": "Fachvorträge und Weiterbildung für Schulen – EDUSOL",
+    "tint": "#efe8f3",
+    "menuTitle": "Fachvorträge"
   },
   {
     "slug": "krisenmanagement",
@@ -81,7 +85,9 @@
     "heroWidth": 1156,
     "heroHeight": 160,
     "cardTitle": "Krisen­management",
-    "seoTitle": "Krisenmanagement für Schulen und Organisationen – EDUSOL"
+    "seoTitle": "Krisenmanagement für Schulen und Organisationen – EDUSOL",
+    "tint": "#e6eaf4",
+    "menuTitle": "Krisenmanagement"
   },
   {
     "slug": "npo",
@@ -109,7 +115,9 @@
     "heroWidth": 366,
     "heroHeight": 160,
     "cardTitle": "NPO-Beratung",
-    "seoTitle": "NPO-Beratung: Organisation und Strategie – EDUSOL"
+    "seoTitle": "NPO-Beratung: Organisation und Strategie – EDUSOL",
+    "tint": "#f3ebe3",
+    "menuTitle": "NPO"
   },
   {
     "slug": "schulentwicklung",
@@ -137,6 +145,8 @@
     "heroWidth": 1064,
     "heroHeight": 160,
     "cardTitle": "Schul­entwicklung",
-    "seoTitle": "Schulentwicklung: Leitbild, Unterricht, Führung – EDUSOL"
+    "seoTitle": "Schulentwicklung: Leitbild, Unterricht, Führung – EDUSOL",
+    "tint": "#f6e6e8",
+    "menuTitle": "Schulentwicklung"
   }
 ]

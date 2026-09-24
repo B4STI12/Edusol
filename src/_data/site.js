@@ -12,6 +12,10 @@ export default {
   email: "info@edusol.ch",
   securityEmail: "info@edusol.ch",
   phone: "",
+  // Akut-Hilfe: nur telefonisch, zu Bürozeiten. Leer = Platzhalter wird angezeigt.
+  akutPhone: "",
+  akutHours: "Montag bis Freitag, 8–17 Uhr",
+  akutHoursShort: "Mo–Fr 8–17 Uhr",
   whatsapp: "",
   linkedin: "https://www.linkedin.com/company/edusol",
   formAction: "https://formspree.io/f/xvzdelpq",

@@ -2,93 +2,124 @@
 layout: layouts/base.njk
 title: Gemeinsam loslegen
 fullTitle: Kontakt und Anfrage – Gemeinsam loslegen mit EDUSOL
-description: Nehmt Kontakt mit EDUSOL auf – wir beraten euch gerne zu Coaching, Supervision, Schulentwicklung, Krisenmanagement, NPO-Beratung und Fachvorträgen.
+description: Nehmt Kontakt mit EDUSOL auf – wir beraten euch zu Coaching, Supervision, Schulentwicklung, Krisenmanagement, NPO-Beratung und Fachvorträgen.
 permalink: /kontakt.html
 pageScript: /assets/js/contact-form.js
-breadcrumb:
-  - name: Kontakt
-    url: /kontakt.html
+hideCta: true
 ---
 <section class="hero hero--page">
-  <div class="container px-4 px-lg-5 py-5 measure-narrow">
-    <p class="eyebrow mb-3">Wir freuen uns, von euch zu hören</p>
-    <h1 class="heading-page mb-3">Gemeinsam loslegen</h1>
-    <p class="lead-text mb-0">
-      Habt ihr Fragen, möchtet ihr ein Angebot anfragen oder einfach mehr über EDUSOL erfahren? Schreibt uns – wir melden uns innerhalb von 48 Stunden.
-    </p>
+  <div class="container hero__inner stack stack-md">
+    <p class="eyebrow">Wir freuen uns, von euch zu hören</p>
+    <h1 class="h-page">Gemeinsam loslegen</h1>
+    <p class="lead">Erzählt uns kurz, worum es geht. Wir melden uns innerhalb von 48 Stunden mit einem Vorschlag.</p>
   </div>
 </section>
 
-<section class="py-5 bg-white">
-  <div class="container px-4 measure-narrow">
-    <div class="form-panel p-4 p-md-5">
-      <h2 class="fw-bold fs-4 mb-3">Schreibt uns direkt</h2>
-      <p class="text-muted-strong fw-light-text">
-        Füllt das Formular aus oder schreibt eine E-Mail an
-        <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
-        Alle Felder ohne den Zusatz «optional» sind Pflichtfelder.
-      </p>
-      <hr class="my-4">
+<section class="section section--white">
+  <div class="container contact-layout">
+    <div class="contact-layout__main stack stack-lg">
+      <div id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></div>
 
-      <div id="form-status" class="form-status mb-4" role="status" aria-live="polite" tabindex="-1" hidden></div>
+      <div class="panel panel--soft" id="form-success" tabindex="-1" hidden>
+        <img src="/assets/img/eulen/logo.svg" width="70" height="64" alt="">
+        <h2 class="h-small">Danke – eure Anfrage ist bei uns.</h2>
+        <p>Wir melden uns innerhalb von 48 Stunden bei euch.</p>
+        <p><a class="link-arrow" href="/">← Zur Startseite</a></p>
+      </div>
 
-      <form id="contact-form" action="{{ site.formAction }}" method="POST" data-fallback-email="{{ site.email }}">
+      <form class="form" id="contact-form" action="{{ site.formAction }}" method="POST" data-fallback-email="{{ site.email }}">
         <input type="hidden" name="_subject" value="Neue Anfrage über edusol.ch">
         <div class="hp-field" aria-hidden="true">
           <label for="website">Dieses Feld bitte leer lassen</label>
           <input type="text" id="website" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
-        <div class="row g-3">
-          <div class="col-sm-6">
-            <label for="vorname" class="form-label fw-semibold small">Vorname</label>
-            <input type="text" class="form-control" id="vorname" name="vorname" autocomplete="given-name" required aria-describedby="vorname-error">
-            <p class="field-error" id="vorname-error" hidden></p>
+        <fieldset class="form-step">
+          <legend class="form-step__title">1. Worum geht es? <span class="hint">(optional)</span></legend>
+          <div class="chips">
+            {%- for f in fields %}
+            <label class="chip theme-{{ f.slug }}">
+              <input type="radio" name="thema" value="{{ f.title }}" data-slug="{{ f.slug }}">
+              <span><img src="/assets/img/eulen/{{ f.slug }}.svg" width="28" height="26" alt="">{{ f.menuTitle }}</span>
+            </label>
+            {%- endfor %}
+            <label class="chip">
+              <input type="radio" name="thema" value="Anderes" data-slug="anderes">
+              <span><img src="/assets/img/eulen/logo.svg" width="28" height="26" alt="">Anderes</span>
+            </label>
           </div>
-          <div class="col-sm-6">
-            <label for="nachname" class="form-label fw-semibold small">Nachname</label>
-            <input type="text" class="form-control" id="nachname" name="nachname" autocomplete="family-name" required aria-describedby="nachname-error">
-            <p class="field-error" id="nachname-error" hidden></p>
+          <p class="callout callout--crisis" id="crisis-hint" hidden>
+            <span><strong>Ist es akut?</strong> Dann ruft uns direkt an – {{ site.akutHoursShort }}.</span>
+            <a href="/akut.html">Zur Akut-Hilfe →</a>
+          </p>
+        </fieldset>
+
+        <fieldset class="form-step">
+          <legend class="form-step__title">2. Wer seid ihr?</legend>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Vor- und Nachname</label>
+              <input class="input" type="text" id="name" name="name" autocomplete="name" required aria-describedby="name-error">
+              <p class="field-error" id="name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="email">E-Mail</label>
+              <input class="input" type="email" id="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="email-error">
+              <p class="field-error" id="email-error" hidden></p>
+            </div>
           </div>
-          <div class="col-12">
-            <label for="email" class="form-label fw-semibold small">E-Mail</label>
-            <input type="email" class="form-control" id="email" name="email" autocomplete="email" inputmode="email" spellcheck="false" required aria-describedby="email-hint email-error">
-            <p class="form-text small mb-0" id="email-hint">Zum Beispiel name@schule.ch</p>
-            <p class="field-error" id="email-error" hidden></p>
+          <button class="link-button" type="button" id="more-toggle" aria-expanded="true" aria-controls="more-fields" hidden>+ Telefon &amp; Organisation angeben (optional)</button>
+          <div class="field-row" id="more-fields">
+            <div class="field">
+              <label for="telefon">Telefon <span class="optional">(optional)</span></label>
+              <input class="input" type="tel" id="telefon" name="telefon" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="organisation">Schule, Verein, Unternehmen <span class="optional">(optional)</span></label>
+              <input class="input" type="text" id="organisation" name="organisation" autocomplete="organization">
+            </div>
           </div>
-          <div class="col-12">
-            <label for="telefon" class="form-label fw-semibold small">Telefon <span class="optional-hint">(optional)</span></label>
-            <input type="tel" class="form-control" id="telefon" name="telefon" autocomplete="tel">
-          </div>
-          <div class="col-12">
-            <label for="organisation" class="form-label fw-semibold small">Organisation / Institution <span class="optional-hint">(optional)</span></label>
-            <input type="text" class="form-control" id="organisation" name="organisation" autocomplete="organization">
-          </div>
-          <div class="col-12">
-            <label for="betreff" class="form-label fw-semibold small">Thema</label>
-            <select class="form-select" id="betreff" name="betreff" required aria-describedby="betreff-error">
-              <option value="" selected disabled>Bitte wählen …</option>
-              {%- for field in fields %}
-              <option value="{{ field.title }}">{{ field.title }}</option>
-              {%- endfor %}
-              <option value="Anderes">Anderes</option>
-            </select>
-            <p class="field-error" id="betreff-error" hidden></p>
-          </div>
-          <div class="col-12">
-            <label for="nachricht" class="form-label fw-semibold small">Nachricht</label>
-            <textarea class="form-control" id="nachricht" name="nachricht" rows="5" required aria-describedby="nachricht-error"></textarea>
+        </fieldset>
+
+        <div class="form-step">
+          <div class="field">
+            <label class="form-step__title" for="nachricht">3. Eure Nachricht</label>
+            <textarea class="input" id="nachricht" name="nachricht" rows="5" required aria-describedby="nachricht-error"></textarea>
             <p class="field-error" id="nachricht-error" hidden></p>
           </div>
-          <div class="col-12 mt-3">
-            <p class="small text-muted-strong mb-3">
-              Eure Angaben werden über den Formulardienst Formspree (USA) an uns übermittelt und nur zur Bearbeitung eurer Anfrage verwendet.
-              Details findet ihr in der <a href="/datenschutz.html#kontaktformular">Datenschutzerklärung</a>.
-            </p>
-            <button type="submit" class="btn btn-edusol px-4 py-2">Nachricht senden</button>
-          </div>
+        </div>
+
+        <p class="form-privacy">
+          Eure Angaben werden über den Formulardienst Formspree (USA) an uns übermittelt und nur zur Bearbeitung eurer Anfrage verwendet.
+          Details in der <a href="/datenschutz.html#kontaktformular">Datenschutzerklärung</a>.
+        </p>
+
+        <div class="form-submit">
+          <button class="btn btn--primary btn--lg" type="submit">Anfrage senden</button>
+          <span class="hint">Unverbindlich · Antwort innerhalb 48 h</span>
         </div>
       </form>
     </div>
+
+    <aside class="contact-layout__aside" aria-label="Weitere Kontaktwege">
+      <div class="panel panel--soft">
+        <h2>Lieber direkt?</h2>
+        <p class="stack">
+          <span class="panel__meta">E-Mail</span>
+          <a class="panel__email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+        </p>
+        {%- if site.whatsapp %}
+        <a class="btn btn--whatsapp" href="https://wa.me/{{ site.whatsapp }}" rel="noopener" target="_blank">Schreib uns auf WhatsApp<span class="visually-hidden"> (öffnet in neuem Tab)</span></a>
+        {%- endif %}
+      </div>
+      <div class="panel panel--line">
+        <h2>Wie es weitergeht</h2>
+        <ol class="steps steps--compact">
+          {%- for st in steps %}
+          <li class="steps__item"><span class="num" aria-hidden="true">{{ loop.index }}</span><p><strong>{{ st.title }}</strong> {{ st.text }}</p></li>
+          {%- endfor %}
+        </ol>
+      </div>
+    </aside>
   </div>
 </section>

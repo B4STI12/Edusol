@@ -1,7 +1,6 @@
 import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
 import path from "node:path";
 import { HtmlBasePlugin } from "@11ty/eleventy";
-import { PurgeCSS } from "purgecss";
 import { transform } from "lightningcss";
 
 const FONT_FILES = [
@@ -24,22 +23,13 @@ export default function (eleventyConfig) {
     });
   }
 
-  // Bootstrap + eigenes CSS bündeln, ungenutzte Regeln entfernen, minifizieren.
+  // CSS minifizieren (Lightning CSS) und als site.css ausliefern.
   eleventyConfig.on("eleventy.after", async ({ dir }) => {
     const output = dir.output;
-    const sources = ["node_modules/bootstrap/dist/css/bootstrap.css", "src/assets/css/main.css"];
-    const raw = (await Promise.all(sources.map((f) => readFile(f, "utf8")))).join("\n");
-    const [purged] = await new PurgeCSS().purge({
-      content: [`${output}/**/*.html`, `${output}/assets/js/**/*.js`],
-      css: [{ raw }],
-      fontFace: false,
-      keyframes: true,
-      variables: true,
-      safelist: { standard: ["show", "form-status--success", "form-status--error"] },
-    });
+    const source = await readFile("src/assets/css/main.css");
     const { code } = transform({
-      filename: "site.css",
-      code: Buffer.from(purged.css),
+      filename: "main.css",
+      code: source,
       minify: true,
       targets: { chrome: 111 << 16, firefox: 111 << 16, safari: 16 << 16 },
     });
@@ -47,6 +37,9 @@ export default function (eleventyConfig) {
     await writeFile(path.join(output, "assets/css/site.css"), code);
     await rm(path.join(output, "assets/css/main.css"), { force: true });
   });
+
+  // Wirkungsfeld anhand des Slugs nachschlagen.
+  eleventyConfig.addFilter("field", (slug, fields) => fields.find((f) => f.slug === slug));
 
   // Absolute URL for canonical, Open Graph and sitemap.
   eleventyConfig.addFilter("absoluteUrl", (path, base) => {

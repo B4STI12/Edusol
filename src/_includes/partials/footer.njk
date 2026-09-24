@@ -1,42 +1,44 @@
-{%- from "partials/icons.njk" import linkedin %}
-<footer class="site-footer border-top py-5">
-  <div class="container px-4 px-lg-5">
-    <div class="row g-4 align-items-start">
-      <div class="col-md-4">
-        <a href="/">
-          <img src="/assets/img/logo.svg" width="110" height="28" alt="EDUSOL – zur Startseite">
-        </a>
-        <p class="footer-meta mt-3 mb-1">{{ site.claim }}</p>
-        <p class="mb-0"><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-        {%- if site.linkedin %}
-        <p class="mb-0">
-          <a class="footer-social gap-2" href="{{ site.linkedin }}" rel="noopener" target="_blank">
-            {{ linkedin() }}
-            LinkedIn<span class="visually-hidden"> (öffnet in neuem Tab)</span>
-          </a>
-        </p>
-        {%- endif %}
+<footer class="site-footer on-dark">
+  <div class="container site-footer__inner">
+    <div class="site-footer__cols">
+      <div class="stack stack-md">
+        <a class="site-footer__logo" href="/"><img src="/assets/img/logo.svg" width="118" height="30" alt="EDUSOL – zur Startseite"></a>
+        <p class="site-footer__claim">Bildung, die bewegt. Entwicklung, die wirkt. Lösungen, die bleiben.</p>
       </div>
-      <nav class="col-sm-6 col-md-4" aria-labelledby="footer-fields">
-        <p class="footer-heading" id="footer-fields">Wirkungsfelder</p>
-        <ul class="list-unstyled mb-0">
-          {%- for field in fields %}
-          <li><a href="/{{ field.slug }}.html">{{ field.title }}</a></li>
+      <nav class="stack stack-sm" aria-labelledby="footer-felder">
+        <h2 class="site-footer__heading" id="footer-felder">Wirkungsfelder</h2>
+        <ul class="site-footer__list">
+          {%- for f in fields %}
+          <li><a href="/{{ f.slug }}.html">{{ f.menuTitle }}</a></li>
           {%- endfor %}
         </ul>
       </nav>
-      <nav class="col-sm-6 col-md-4" aria-labelledby="footer-about">
-        <p class="footer-heading" id="footer-about">EDUSOL</p>
-        <ul class="list-unstyled mb-0">
+      <nav class="stack stack-sm" aria-labelledby="footer-edusol">
+        <h2 class="site-footer__heading" id="footer-edusol">EDUSOL</h2>
+        <ul class="site-footer__list">
           <li><a href="/ueber-uns.html">Wir sind EDUSOL</a></li>
+          <li><a href="/ueber-uns.html#team">Team</a></li>
+          <li><a href="/einblicke.html">Einblicke</a></li>
           <li><a href="/kontakt.html">Gemeinsam loslegen</a></li>
+          <li><a class="is-strong" href="/akut.html">Akut-Hilfe</a></li>
         </ul>
       </nav>
+      <div class="stack stack-sm">
+        <h2 class="site-footer__heading">Kontakt</h2>
+        <ul class="site-footer__list">
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+          {%- if site.whatsapp %}
+          <li><a href="https://wa.me/{{ site.whatsapp }}" rel="noopener" target="_blank">WhatsApp<span class="visually-hidden"> (öffnet in neuem Tab)</span></a></li>
+          {%- endif %}
+          {%- if site.linkedin %}
+          <li><a href="{{ site.linkedin }}" rel="noopener" target="_blank">LinkedIn<span class="visually-hidden"> (öffnet in neuem Tab)</span></a></li>
+          {%- endif %}
+        </ul>
+      </div>
     </div>
-    <hr class="mt-4 mb-2">
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 footer-meta">
-      <p class="mb-0">&copy; {{ buildYear }} EDUSOL</p>
-      <ul class="list-unstyled d-flex gap-4 mb-0" aria-label="Rechtliches">
+    <div class="site-footer__bottom">
+      <p>&copy; {{ buildYear }} EDUSOL</p>
+      <ul class="site-footer__legal" aria-label="Rechtliches">
         <li><a href="/datenschutz.html">Datenschutz</a></li>
         <li><a href="/impressum.html">Impressum</a></li>
       </ul>

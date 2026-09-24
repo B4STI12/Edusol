@@ -1,0 +1,7 @@
+[
+  { "label": "Wir sind ein Kollegium und wollen unsere Schule weiterentwickeln", "field": "schulentwicklung" },
+  { "label": "Wir planen eine schulinterne Weiterbildung oder eine Tagung", "field": "fachvortraege" },
+  { "label": "Wir sind ein Verein oder eine NPO", "field": "npo" },
+  { "label": "Unser Team steckt gerade in einer Krise", "field": "krisenmanagement" },
+  { "label": "Ich suche persönliche Begleitung oder Supervision", "field": "coaching-supervision" }
+]

@@ -12,6 +12,8 @@ const hits = [];
 for (const file of files) {
   const text = await readFile(file, "utf8");
   for (const match of text.matchAll(/\[Platzhalter[^\]]*\]/g)) hits.push(`${file}: ${match[0]}`);
+  const photos = (text.match(/data-placeholder="foto"/g) || []).length;
+  if (photos) hits.push(`${file}: ${photos} Foto-Platzhalter`);
 }
 
 if (hits.length === 0) {

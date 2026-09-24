@@ -1,0 +1,7 @@
+[
+  { "slug": "patrick", "name": "Patrick", "role": "[Platzhalter – Funktion, z. B. Schulleiter]", "fields": ["schulentwicklung", "fachvortraege"] },
+  { "slug": "susann", "name": "Susann", "role": "[Platzhalter – Funktion]", "fields": ["coaching-supervision", "krisenmanagement"] },
+  { "slug": "dominik", "name": "Dominik", "role": "[Platzhalter – Funktion, z. B. Institutionsleiter]", "fields": ["npo", "schulentwicklung"] },
+  { "slug": "thorsten", "name": "Thorsten", "role": "[Platzhalter – Funktion]", "fields": ["krisenmanagement", "fachvortraege"] },
+  { "slug": "baerbel", "name": "Bärbel", "role": "[Platzhalter – Funktion]", "fields": ["coaching-supervision", "npo"] }
+]

@@ -18,8 +18,10 @@ bzw. `CHROMIUM_PATH=…` / `CHROME_PATH=…`).
 
 | Pfad | Inhalt |
 |---|---|
-| `src/_data/site.js` | **Stammdaten**: E-Mail, Adresse, Telefon, WhatsApp, Formular-Endpoint, `security.txt`-Ablauf |
-| `src/_data/fields.json` | Inhalte der fünf Wirkungsfelder (erzeugt je eine Seite) |
+| `src/_data/site.js` | **Stammdaten**: E-Mail, Adresse, Akut-Telefon und -Zeiten, WhatsApp, Formular-Endpoint, `security.txt`-Ablauf |
+| `src/_data/fields.json` | Inhalte und Farben der fünf Wirkungsfelder (erzeugt je eine Seite) |
+| `src/_data/team.json` | Team-Profile (Rolle, Wirkungsfelder) für „Wir sind EDUSOL“ |
+| `src/_data/finder.json`, `stories.json`, `steps.json` | „Wo steht ihr gerade?“, Einblicke, Ablauf-Schritte |
 | `src/_includes/` | Basis-Layout, Header, Footer, JSON-LD |
 | `src/*.njk` | Seiten (Startseite, Über uns, Kontakt, Datenschutz, Impressum, 404, robots, sitemap, security.txt) |
 | `src/assets/` | CSS (Design-Tokens), JS, Bilder, OG-Bild |
@@ -28,9 +30,11 @@ bzw. `CHROMIUM_PATH=…` / `CHROME_PATH=…`).
 
 Navbar und Footer existieren nur einmal (`src/_includes/partials/`).
 Inline-Styles sind per `html-validate` verboten, damit die CSP ohne `'unsafe-inline'` auskommt.
-Beim Build werden Bootstrap-CSS und `main.css` gebündelt, ungenutzte Regeln per PurgeCSS entfernt
-und mit Lightning CSS minifiziert (`assets/css/site.css`). Klassen, die erst per JavaScript gesetzt
-werden, müssen in `eleventy.config.js` auf die Safelist.
+Das CSS (`src/assets/css/main.css`, ohne Framework) wird beim Build mit Lightning CSS minifiziert
+und als `assets/css/site.css` ausgeliefert.
+
+**Fotos:** Solange keine Bilder vorliegen, zeigen gestrichelte Rahmen „Foto … folgt“ an
+(`partials/photo-slot.njk`). `npm run check:placeholders` listet sie zusammen mit den Text-Platzhaltern auf.
 
 ## Deployment
 
