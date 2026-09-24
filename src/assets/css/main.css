@@ -1,0 +1,595 @@
+/* ==========================================================================
+   EDUSOL – Design-Tokens und Komponenten
+   Kontraste geprüft gegen WCAG 2.2 AA (Text ≥ 4.5:1).
+   ========================================================================== */
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-300-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-300-italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/poppins-latin-700-normal.woff2") format("woff2");
+}
+
+/* Metrisch angeglichener Fallback gegen Layout-Shift (Werte: @capsizecss/metrics) */
+@font-face {
+  font-family: "Poppins Fallback";
+  src: local("Arial"), local("ArialMT");
+  ascent-override: 93.6182%;
+  descent-override: 31.2061%;
+  line-gap-override: 8.916%;
+  size-adjust: 112.1577%;
+}
+
+:root {
+  color-scheme: light;
+
+  --c-bg: #ffffff;
+  --c-text: #1a1a1a;
+  --c-muted: #555555;          /* 7.46 auf Weiss, 4.63 auf sky-300 */
+  --c-footer-muted: #4d5a64;   /* 5.69 auf sky-100 */
+
+  --c-sky-100: #dce8f2;
+  --c-sky-200: #cddde9;
+  --c-sky-300: #b8cfe0;
+  --c-ink: #2a4a5e;
+  --c-ink-strong: #1a3a50;
+
+  --c-primary: #3a7ba0;        /* Button-Hintergrund, weisser Text 4.65 */
+  --c-primary-text: #285a78;   /* Text/Links, ≥ 4.62 auf allen Flächen */
+  --c-focus: #1a3a50;
+
+  --c-sol: #8a5a12;
+  --c-sol-bg: #fef8ec;
+  --c-sol-border: #f0dfa8;
+
+  --c-whatsapp: #25d366;
+  --c-whatsapp-text: #0b3d20;  /* 6.22 auf WhatsApp-Grün */
+
+  --c-error: #a4161a;
+  --c-success: #0c4f32;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+
+  --font-sans: "Poppins", "Poppins Fallback", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --bs-body-font-family: var(--font-sans);
+  --bs-body-color: var(--c-text);
+  --bs-body-bg: var(--c-bg);
+  --bs-link-color: var(--c-primary-text);
+  --bs-link-color-rgb: 40, 90, 120;
+  --bs-link-hover-color: var(--c-ink-strong);
+}
+
+html {
+  scroll-padding-top: 6rem;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--c-bg);
+  color: var(--c-text);
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3 {
+  hyphens: auto;
+  overflow-wrap: normal;
+}
+
+/* ---------- Fokus & Skip-Link ---------- */
+
+:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.btn:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2000;
+  padding: 0.75rem 1.25rem;
+  background: var(--c-ink-strong);
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+  color: #fff;
+}
+
+/* ---------- Layout-Flächen ---------- */
+
+.bg-sky-100 { background-color: var(--c-sky-100); }
+.bg-sky-200 { background-color: var(--c-sky-200); }
+.bg-sky-300 { background-color: var(--c-sky-300); }
+
+.text-muted-strong { color: var(--c-muted); }
+.text-ink { color: var(--c-ink); }
+.text-ink-strong { color: var(--c-ink-strong); }
+.text-primary-strong { color: var(--c-primary-text); }
+
+.fw-light-text {
+  font-weight: 300;
+  line-height: 1.85;
+}
+
+.measure { max-width: 40rem; }        /* ≈ 70 Zeichen */
+.measure-narrow { max-width: 42.5rem; }
+.measure-wide { max-width: 42rem; }
+.measure-lead { max-width: 32.5rem; }
+
+.heading-section {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+.heading-page {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--c-primary-text);
+}
+
+.lead-text {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--c-ink);
+}
+
+/* ---------- Header / Navigation ---------- */
+
+.site-header {
+  background-color: var(--c-sky-100);
+}
+
+.site-header .nav-link {
+  color: var(--c-text);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link[aria-current="page"] {
+  color: var(--c-primary-text);
+}
+
+.site-header .nav-link[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 0.4em;
+  text-decoration-thickness: 2px;
+}
+
+.site-header .dropdown-item {
+  min-height: 44px;
+}
+
+.site-header .dropdown-item[aria-current="page"] {
+  background-color: var(--c-sky-100);
+  color: var(--c-text);
+}
+
+.navbar-toggler {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-edusol {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--c-primary);
+  --bs-btn-border-color: var(--c-primary);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--c-primary-text);
+  --bs-btn-hover-border-color: var(--c-primary-text);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--c-ink-strong);
+  --bs-btn-active-border-color: var(--c-ink-strong);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--c-primary);
+  --bs-btn-disabled-border-color: var(--c-primary);
+  font-weight: 600;
+  border-radius: 50rem;
+  min-height: 44px;
+}
+
+.btn-edusol-outline {
+  --bs-btn-color: var(--c-primary-text);
+  --bs-btn-border-color: var(--c-primary-text);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--c-primary-text);
+  --bs-btn-hover-border-color: var(--c-primary-text);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--c-ink-strong);
+  --bs-btn-active-border-color: var(--c-ink-strong);
+  border-width: 2px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  min-height: 44px;
+}
+
+.btn-whatsapp {
+  --bs-btn-color: var(--c-whatsapp-text);
+  --bs-btn-bg: var(--c-whatsapp);
+  --bs-btn-border-color: var(--c-whatsapp);
+  --bs-btn-hover-color: var(--c-whatsapp-text);
+  --bs-btn-hover-bg: #3ee07c;
+  --bs-btn-hover-border-color: #3ee07c;
+  --bs-btn-active-color: var(--c-whatsapp-text);
+  --bs-btn-active-bg: #3ee07c;
+  font-weight: 600;
+  border-radius: 50rem;
+  min-height: 44px;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background-color: var(--c-sky-300);
+  display: flex;
+  align-items: center;
+}
+
+.hero--home { min-height: 80vh; }
+.hero--field { min-height: 52vh; }
+.hero--page { min-height: 40vh; }
+.hero--legal { min-height: 28vh; }
+
+.hero-logo {
+  width: min(100%, 26rem);
+  height: auto;
+}
+
+.field-hero-img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 160px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.breadcrumb-bar {
+  background-color: var(--c-sky-300);
+  font-size: 0.875rem;
+}
+
+.breadcrumb-bar ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
+  margin: 0;
+  padding: 1rem 0 0;
+  list-style: none;
+}
+
+.breadcrumb-bar li + li::before {
+  content: "›";
+  margin-inline-end: 0.5rem;
+  color: var(--c-ink);
+}
+
+.breadcrumb-bar a {
+  color: var(--c-primary-text);
+  font-weight: 600;
+}
+
+.breadcrumb-bar [aria-current="page"] {
+  color: var(--c-ink);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--c-primary-text);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Karten ---------- */
+
+.card-field {
+  display: block;
+  height: 100%;
+  padding: 1.5rem;
+  text-align: center;
+  background-color: var(--c-sky-100);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-field:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(26, 58, 80, 0.12);
+}
+
+.card-field img {
+  width: auto;
+  height: 80px;
+}
+
+.card-field__title {
+  margin: 1rem 0 0;
+  hyphens: manual;
+  overflow-wrap: normal;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card-soft {
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card-soft h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.card-soft p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--c-muted);
+  margin: 0;
+}
+
+.card-brand {
+  height: 100%;
+  padding: 2rem;
+  border-radius: var(--radius-md);
+}
+
+.card-brand--edu {
+  background: var(--c-sky-100);
+  --brand-color: var(--c-primary-text);
+}
+
+.card-brand--sol {
+  background: var(--c-sol-bg);
+  border: 1px solid var(--c-sol-border);
+  --brand-color: var(--c-sol);
+}
+
+.card-brand__word {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin: 0 0 0.4rem;
+  color: var(--brand-color);
+}
+
+.card-brand__meaning {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--brand-color);
+}
+
+.card-brand p:last-child {
+  color: #444;
+  line-height: 1.85;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ---------- Rechtstexte ---------- */
+
+.legal h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+}
+
+.legal h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.legal p,
+.legal li,
+.legal address {
+  color: var(--c-muted);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.legal .placeholder-note {
+  background: var(--c-sol-bg);
+  border: 1px solid var(--c-sol-border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  color: var(--c-text);
+  font-weight: 400;
+}
+
+/* ---------- Formular ---------- */
+
+.form-panel {
+  background-color: var(--c-sky-100);
+  border-radius: var(--radius-lg);
+}
+
+.form-control,
+.form-select {
+  border-color: #6c7a86;         /* 3:1 gegen Weiss für Feldgrenzen */
+  border-radius: var(--radius-sm);
+  min-height: 44px;
+}
+
+.form-control[aria-invalid="true"],
+.form-select[aria-invalid="true"] {
+  border-color: var(--c-error);
+  border-width: 2px;
+}
+
+.field-error {
+  color: var(--c-error);
+  font-size: 0.875rem;
+  margin-top: 0.35rem;
+}
+
+.form-status {
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+}
+
+.form-status--success {
+  background: #e3f3ea;
+  color: var(--c-success);
+}
+
+.form-status--error {
+  background: #fbe9ea;
+  color: var(--c-error);
+}
+
+.optional-hint {
+  font-weight: 400;
+  color: var(--c-muted);
+}
+
+/* Honeypot: für Menschen unsichtbar, für Screenreader ausgeblendet */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background-color: var(--c-sky-100);
+}
+
+.site-footer a {
+  color: var(--c-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
+
+.site-footer .footer-heading {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-footer-muted);
+  margin-bottom: 0.25rem;
+}
+
+.site-footer .footer-meta,
+.site-footer .footer-meta a {
+  color: var(--c-footer-muted);
+  font-size: 0.875rem;
+}
+
+.site-footer .footer-social {
+  color: var(--c-primary-text);
+  font-weight: 600;
+}
+
+/* ---------- Bewegung reduzieren ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card-field:hover {
+    transform: none;
+  }
+}
+
+/* ---------- Farben der Wirkungsfelder (alle ≥ 7:1 auf sky-100) ---------- */
+
+.field-coaching-supervision { color: #0c4f32; }
+.field-fachvortraege { color: #4a2e5d; }
+.field-krisenmanagement { color: #293a68; }
+.field-npo { color: #62432b; }
+.field-schulentwicklung { color: #8c1623; }

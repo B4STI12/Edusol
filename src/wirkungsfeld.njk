@@ -1,0 +1,49 @@
+---js
+{
+  layout: "layouts/base.njk",
+  pagination: { data: "fields", size: 1, alias: "field", addAllPagesToCollections: true },
+  permalink: (data) => `/${data.field.slug}.html`,
+  eleventyComputed: {
+    title: (data) => data.field.title,
+    fullTitle: (data) => data.field.seoTitle,
+    description: (data) => data.field.description,
+    preloadImage: (data) => `/assets/img/fachgebiete/${data.field.slug}.svg`,
+    breadcrumb: (data) => [{ name: data.field.title, url: `/${data.field.slug}.html` }],
+  },
+}
+---
+<section class="hero hero--field">
+  <div class="container px-4 px-lg-5 py-5 text-center">
+    <h1 class="mb-0">
+      <img class="field-hero-img" src="/assets/img/fachgebiete/{{ field.slug }}.svg" width="{{ field.heroWidth }}" height="{{ field.heroHeight }}" alt="{{ field.title }}" fetchpriority="high">
+    </h1>
+    <p class="lead-text measure-lead mt-4 mb-0 mx-auto">{{ field.lead }}</p>
+  </div>
+</section>
+
+<section class="py-5 bg-white">
+  <div class="container px-4 py-4 measure">
+    <h2 class="fw-bold mb-4 text-center">{{ field.heading }}</h2>
+    <p class="text-muted-strong fw-light-text">{{ field.body }}</p>
+  </div>
+</section>
+
+<section class="py-5 bg-sky-100" aria-labelledby="angebote-{{ field.slug }}">
+  <div class="container px-4">
+    <h2 class="visually-hidden" id="angebote-{{ field.slug }}">Angebote</h2>
+    <div class="row g-4 justify-content-center">
+      {%- for feature in field.features %}
+      <div class="col-md-4">
+        <div class="card-soft bg-white">
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.text }}</p>
+        </div>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<div class="container px-4 py-5 text-center">
+  <a class="btn btn-edusol-outline px-4 py-3" href="/kontakt.html">Wir erstellen euch gerne ein individuelles Angebot</a>
+</div>

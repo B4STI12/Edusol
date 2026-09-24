@@ -1,0 +1,30 @@
+{%- set orgId = "/" | absoluteUrl(site.url) + "#organization" %}
+{%- set graph = [
+  {
+    "@type": "ProfessionalService",
+    "@id": orgId,
+    "name": site.name,
+    "slogan": site.claim,
+    "url": "/" | absoluteUrl(site.url),
+    "logo": "/assets/img/logo.svg" | absoluteUrl(site.url),
+    "image": "/assets/og/og-image.png" | absoluteUrl(site.url),
+    "email": site.email,
+    "areaServed": "CH",
+    "sameAs": [site.linkedin]
+  },
+  {
+    "@type": "WebSite",
+    "name": site.name,
+    "url": "/" | absoluteUrl(site.url),
+    "inLanguage": site.lang,
+    "publisher": { "@id": orgId }
+  }
+] %}
+{%- if breadcrumb %}
+{%- set crumbs = [{ "@type": "ListItem", "position": 1, "name": "Startseite", "item": "/" | absoluteUrl(site.url) }] %}
+{%- for crumb in breadcrumb %}
+{%- set crumbs = (crumbs.push({ "@type": "ListItem", "position": loop.index + 1, "name": crumb.name, "item": crumb.url | absoluteUrl(site.url) }), crumbs) %}
+{%- endfor %}
+{%- set graph = (graph.push({ "@type": "BreadcrumbList", "itemListElement": crumbs }), graph) %}
+{%- endif %}
+<script type="application/ld+json">{{ { "@context": "https://schema.org", "@graph": graph } | dump | safe }}</script>
