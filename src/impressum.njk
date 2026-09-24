@@ -2,7 +2,7 @@
 layout: layouts/base.njk
 title: Impressum
 fullTitle: Impressum und Anbieterangaben – EDUSOL
-description: Impressum von EDUSOL – Angaben zum Anbieter dieser Website, Kontaktadresse und E-Mail nach Art. 3 Abs. 1 lit. s UWG, Haftung und Urheberrecht.
+description: Impressum von EDUSOL – Angaben zum Verein als Anbieter dieser Website, Kontaktadresse und E-Mail nach Art. 3 Abs. 1 lit. s UWG, Haftung und Urheberrecht.
 hideCta: true
 permalink: /impressum.html
 ---
@@ -19,6 +19,7 @@ permalink: /impressum.html
 
     <h2>Anbieter und verantwortlich für den Inhalt</h2>
     {% include "partials/owner-address.njk" %}
+    <p>Vertretungsberechtigt: {{ site.owner.representatives }}</p>
     {%- if site.owner.uid %}
     <p>Unternehmens-Identifikationsnummer (UID): {{ site.owner.uid }}</p>
     {%- endif %}
